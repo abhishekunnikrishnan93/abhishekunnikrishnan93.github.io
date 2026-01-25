@@ -1,0 +1,956 @@
+/* --- Variables & Reset --- */
+:root {
+    --bg-color: #0f1014;       /* Very dark, almost black */
+    --card-bg: #1b1e23;        /* Slightly lighter for contrast */
+    --text-primary: #e0e0e0;   /* Off-white for readability */
+    --text-secondary: #a0a0a0; /* Grey for subtitles */
+    --accent-color: #4a90e2;   /* Steel Blue - Professional & Classy */
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- Navbar --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    background-color: rgba(15, 16, 20, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+}
+
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: var(--accent-color); }
+.hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
+
+/* --- Hero Section --- */
+/* --- Color Variables (Easy to Change) --- */
+:root {
+    /* 1. The Main Content Text Color (Changed to Bright Platinum) */
+    --text-content: #e0e0e0; 
+    
+    /* 2. The Accent Color (Currently Cyan - Change this if you want!) */
+    --accent-color: #4cdbf3; 
+    
+    /* 3. The Highlight/Grit Color (White for strong impact) */
+    --text-strong: #ffffff;
+}
+
+/* --- Hero Section Styling --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1rem 2rem;
+    background: radial-gradient(circle at center, #1b1e23 0%, #0f1014 100%);
+    position: relative;
+}
+
+.hero-content-center {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main Title Styling */
+.hero-title {
+    font-size: 4rem;
+    line-height: 1.1;
+    font-weight: 800;
+    color: steelblue; /* Uses Variable */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: -1px;
+}
+
+.highlight-serif {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    color: whitesmoke; /* Uses Variable */
+    font-weight: 400;
+    text-transform: none;
+}
+
+/* Subtitle (commit . grind . deploy) */
+.hero-subtitle {
+    font-family: 'Courier New', monospace;
+    color: var(--accent-color); /* Uses Variable */
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    text-transform: lowercase;
+    font-weight: 600;
+    background: rgba(76, 219, 243, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* --- THE DESCRIPTION CONTENT (Updated Color) --- */
+.hero-description {
+    /* This is the new brighter color */
+    color: var(--text-content); 
+    
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 700px;
+}
+
+/* Styling for the <strong> words */
+.hero-description strong {
+    color: var(--text-strong);
+    font-weight: 700; /* Made slightly bolder */
+    text-shadow: 0 0 10px rgba(255,255,255,0.2); /* Slight glow */
+}
+
+/* Styling for "My workflow..." */
+.highlight-text {
+    color: var(--text-strong);
+    font-style: italic;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.25rem;
+}
+
+/* Top Pill */
+.hero-pill {
+    margin-bottom: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--accent-color); /* Changed to accent color for pop */
+    text-transform: uppercase;
+    display: inline-flex;       /* Keeps the box tight to the text */
+    align-items: center;
+    gap: 10px;
+    
+    /* --- NEW LINES FOR CYLINDRICAL LOOK --- */
+    border: 1px solid rgba(76, 219, 243, 0.3); /* Subtle border */
+    background: rgba(76, 219, 243, 0.05);      /* Very faint background fill */
+    padding: 0.5rem 1.2rem;     /* Space inside the container */
+    border-radius: 50px;        /* Creates the fully rounded/cylindrical ends */
+    box-shadow: 0 0 10px rgba(76, 219, 243, 0.1); /* Optional glow */
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 0.9rem; letter-spacing: 2px; }
+    .hero-description { font-size: 1rem; padding: 0 1rem; }
+}
+
+.hero-split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    text-align: left; /* Default to left align */
+}
+
+/* Square Profile Picture Styles */
+/* --- Profile Picture Container --- */
+.hero-image-container {
+    width: 400px;           /* Sets the fixed width */
+    height: 500px;          /* Sets height (rectangular for this photo) */
+    border-radius: 20px;    /* Rounded corners */
+    overflow: hidden;       /* Hides anything outside the box */
+    border: 4px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);    /* Shadow for depth */
+    margin: 0 auto;         /* Centers it if needed */
+    flex-shrink: 0;         /* Prevents it from shrinking on small screens */
+}
+
+/* --- The Image Itself --- */
+.hero-image-container img {
+    width: 100%;            /* Fills the container width */
+    height: 100%;           /* Fills the container height */
+    object-fit: cover;      /* KEY: Crops image to fit without stretching */
+    object-position: center; /* KEY: Focuses on the face (top) */
+    display: block;
+}
+
+/* Optional: Mobile Adjustment */
+@media (max-width: 768px) {
+    .hero-image-container {
+        width: 280px;
+        height: 320px;
+        margin-bottom: 2rem;
+    }
+}
+
+.hero-text-container {
+    max-width: 600px;
+}
+
+.hero-text-container h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.hero-title-large {
+    font-size: 4rem;
+    margin: 0.2rem 0;
+    letter-spacing: -1px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 550px;
+}
+
+.highlight { color: var(--accent-color); }
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2.5rem;
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 5px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+    transform: translateY(-2px);
+}
+
+/* --- Entrance Animations --- */
+/* Keyframes for the slide-up and fade-in effect */
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Initial state for animatable elements */
+.load-hidden {
+    opacity: 0;
+    /* Apply the animation but pause it at the start */
+    animation: slideUpFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Staggered delays for a sequence effect */
+.hero-image-container { animation-delay: 0.2s; }
+.hero-text-container h3 { animation-delay: 0.4s; }
+.hero-text-container h1 { animation-delay: 0.6s; }
+.hero-text-container h2 { animation-delay: 0.8s; }
+.hero-text-container p { animation-delay: 1.0s; }
+.hero-text-container .btn { animation-delay: 1.2s; }
+
+
+/* --- Sections Common --- */
+.section { padding: 6rem 5%; }
+.bg-darker { background-color: #0a0b0e; }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+.about-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+.about-text strong { color: var(--text-primary); }
+
+/* --- Skills Grid --- */
+/* --- Carousel Container --- */
+.carousel-container {
+    width: 100%;
+    overflow: hidden; /* Hides the scrollbar on the parent */
+    padding: 1rem 0; /* Space for hover effects */
+}
+
+/* --- The Track (Flexbox) --- */
+.carousel-track {
+    display: flex;
+    gap: 2rem; /* Space between cards */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* The magic snap effect */
+    padding-bottom: 20px; /* Space for scrollbar */
+    
+    /* Smooth scrolling */
+    scroll-behavior: smooth;
+    
+    /* Hide Scrollbar (Cross-browser) */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Carousel Item Styling --- */
+.carousel-item {
+    /* Flex-shrink 0 ensures items don't squish */
+    flex: 0 0 auto; 
+    
+    /* Desktop: Show roughly 3 items (Calc allows for gaps) */
+    width: calc(33.333% - 1.4rem); 
+    
+    scroll-snap-align: center; /* Snaps card to center of screen */
+    
+    /* Keep existing card styling */
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 15px;
+    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Hover Effect */
+.carousel-item:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
+}
+
+.carousel-item i { 
+    font-size: 3.5rem; 
+    margin-bottom: 1.5rem; 
+    color: var(--accent-color); 
+}
+
+/* --- Mobile Responsiveness for Carousel --- */
+@media (max-width: 768px) {
+    .carousel-item {
+        /* Mobile: Show roughly 85% of one card to encourage scrolling */
+        width: 85%; 
+        margin-right: 0;
+    }
+    
+    .carousel-track {
+        gap: 1rem;
+        padding-left: 7.5%; /* Centers the first item visually */
+        padding-right: 7.5%;
+    }
+}
+
+/* --- Projects Grid --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.5);
+    border-color: rgba(74, 144, 226, 0.3);
+}
+
+.project-info { padding: 2.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.project-info h3 { margin-bottom: 1rem; color: var(--text-primary); font-size: 1.4rem; }
+.project-info p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem; flex-grow: 1; }
+
+.tags { margin-top: auto; }
+.tags span {
+    display: inline-block;
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--accent-color);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-right: 0.6rem;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+}
+
+/* --- Contact --- */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.contact-btn {
+    font-size: 1.3rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.contact-btn:hover { color: var(--accent-color); transform: translateY(-3px); }
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2.5rem;
+    background: #050505;
+    color: #666;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 992px) {
+    .hero-split {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .hero-image-container {
+        width: 300px;
+        height: 300px;
+        margin-bottom: 1rem;
+    }
+    .hero-text-container {
+        max-width: 100%;
+    }
+    .hero-title-large {
+        font-size: 3rem;
+    }
+    .hero-description {
+        margin: 0 auto 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    
+    .hero { padding-top: 6rem; }
+    .hero-title-large { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.3rem; }
+    .hero-image-container { width: 250px; height: 250px; }
+    
+    .section { padding: 5rem 5%; }
+    .section-title { font-size: 2rem; }
+    .contact-links { gap: 1.5rem; flex-wrap: wrap; }
+}
+/* --- Slider Container --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px; /* Increased width to fit more icons */
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+/* --- The Track --- */
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- Individual Slide --- */
+.slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.4; /* Dim inactive slides */
+    transition: opacity 0.5s, transform 0.5s;
+    transform: scale(0.9);
+}
+
+/* Make the active slide fully visible */
+/* Note: This effect works best when the slide is centered in view */
+.slider-container:hover .slide { opacity: 1; transform: scale(1); }
+
+.skill-group-title {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+}
+
+.slide-content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* IMPORTANT: Allows items to wrap to next line */
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+/* --- Skill Cards inside Slider --- */
+.slide .skill-card {
+    width: 140px; /* Smaller width to fit multiple items */
+    padding: 1.5rem 1rem;
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.slide .skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.slide .skill-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.slide .skill-card h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* --- Buttons --- */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(27, 30, 35, 0.9);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(74, 144, 226, 0.6);
+}
+
+.prev-btn { left: 5px; }
+.next-btn { right: 5px; }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 600px) {
+    .slide-content {
+        gap: 1rem;
+    }
+    .slide .skill-card {
+        width: 110px; /* Smaller cards for mobile */
+        padding: 1rem 0.5rem;
+    }
+    .slide .skill-card i { font-size: 2rem; }
+    .skill-group-title { font-size: 1.4rem; margin-bottom: 1.5rem; }
+}
+/* --- Original Logo Styling --- */
+
+/* 1. Reset the icon box to handle images nicely */
+.slide .skill-card img.skill-icon {
+    width: 50px;         /* Standard size for all logos */
+    height: 50px;        /* Keeps them square */
+    object-fit: contain; /* Ensures logo fits inside without stretching */
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease;
+}
+
+/* 2. Hover Effect: Zoom in slightly */
+.slide .skill-card:hover img.skill-icon {
+    transform: scale(1.2); 
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); /* Adds a subtle glow */
+}
+
+/* 3. GitHub Logo Fix */
+/* The original GitHub logo is black, which disappears on your dark background.
+   This filter inverts the colors, turning the black logo to white. */
+.skill-icon.github-logo {
+    filter: invert(1);
+}
+
+/* --- New Education Section Styling --- */
+
+/* 1. Section Header Styling */
+.section-header-left {
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+.title-large {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.subtitle-mono {
+    font-family: 'Courier New', Courier, monospace; /* Tech/Code look */
+    color: #5d6673;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 2. Grid Layout */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Two columns that stack on mobile */
+    gap: 2rem;
+}
+
+/* 3. The Modern Card */
+.edu-card-modern {
+    background: #0d1117; /* Very dark blue-black */
+    border: 1px solid #30363d; /* Subtle border */
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.edu-card-modern:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 40px -10px rgba(74, 144, 226, 0.15);
+}
+
+/* 4. Top Row: Icon & Badge */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.edu-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #161b22;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.edu-badge {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    
+    /* The "Pill" Look */
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--accent-color);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+}
+
+/* 5. Content Styling */
+.card-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.edu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2f81f7; /* Specifically using a brighter tech blue */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: gap 0.3s ease;
+}
+
+.edu-link:hover {
+    gap: 12px; /* Arrow moves slightly on hover */
+    text-decoration: none;
+}
+
+/* The faint separator line */
+.separator-line {
+    width: 100%;
+    height: 1px;
+    background: #30363d;
+    margin: 1.5rem 0;
+}
+
+.card-content p {
+    color: #8b949e; /* Muted grey text */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .title-large {
+        font-size: 2rem;
+    }
+    .edu-card-modern {
+        padding: 1.5rem;
+    }
+}
+
+/* --- 1. Define the Animation --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px); /* Starts 40px lower */
+        filter: blur(5px); /* Starts slightly blurry */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Ends in original position */
+        filter: blur(0); /* Becomes clear */
+    }
+}
+
+/* --- 2. Apply Animation to Hero Elements --- */
+
+/* Initially hide these elements so they don't flash before animating */
+.hero-pill, 
+.hero-title, 
+.hero-description, 
+.hero-buttons {
+    opacity: 0; 
+    /* The 'forwards' keyword ensures the element stays visible after animation ends */
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* --- 3. Stagger the Delays ( The "One-by-One" Effect) --- */
+
+/* Pill appears immediately */
+.hero-pill {
+    animation-delay: 0.2s;
+}
+
+/* Title appears slightly later */
+.hero-title {
+    animation-delay: 0.4s;
+}
+
+/* Description appears after title */
+.hero-description {
+    animation-delay: 0.6s;
+}
+
+/* Buttons appear last */
+.hero-buttons {
+    animation-delay: 0.8s;
+}
+
+/* --- 4. Special "Resilience" Glow Animation --- */
+@keyframes textGlow {
+    0% { text-shadow: 0 0 0 rgba(76, 219, 243, 0); }
+    100% { text-shadow: 0 0 20px rgba(76, 219, 243, 0.6); }
+}
+
+.highlight-serif {
+    display: inline-block; /* Required for transform animations */
+    animation: textGlow 1.5s ease-in-out infinite alternate; /* Pulsing Glow */
+    animation-delay: 1s; /* Starts glowing after it slides in */
+}
+
+/* --- 5. Fix Button Layout (Optional Polish) --- */
+/* Your HTML has <br> tags between buttons. 
+   This CSS ensures they align nicely if you decide to remove the <br> tags later. */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; /* Adds space between buttons without <br> */
+    flex-wrap: wrap;
+}
+/* --- Wrapper for the Two Buttons --- */
+.hero-buttons {
+    display: flex;           /* aligned side-by-side */
+    justify-content: center; /* centered horizontally */
+    align-items: center;     /* centered vertically */
+    gap: 1.5rem;            /* The "Gap" you requested */
+    margin-top: 2rem;
+    width: 100%;
+}
+
+/* --- Container 1: The Solid Cyan Button --- */
+.btn-primary {
+    background-color: var(--accent-color); /* Cyan */
+    color: #000;          /* Black Text */
+    padding: 1rem 2.5rem; /* Size of the container */
+    border-radius: 8px;   /* Rounded corners */
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(76, 219, 243, 0.4); /* Glow effect */
+}
+
+/* --- Container 2: The Outline Button --- */
+.btn-secondary {
+    background-color: transparent; /* See-through background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Thin border */
+    color: #fff;           /* White Text */
+    padding: 1rem 2.5rem;  /* Size of the container */
+    border-radius: 8px;    /* Rounded corners */
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;             /* Space between Github icon and text */
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle white fill on hover */
+    border-color: #fff;
+    transform: translateY(-3px);
+}
+
+/* --- Mobile Adjustment --- */
+@media (max-width: 600px) {
+    .hero-buttons {
+        flex-direction: column; /* Stack them on small phones */
+        gap: 1rem;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;            /* Full width on phone */
+        justify-content: center;
+    }
+}
+
+/* Paste this at the bottom of style.css */
+
+.load-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.load-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
